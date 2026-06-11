@@ -2,28 +2,56 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Prueba VR A-Frame</title>
-
+<title>VR Video Test</title>
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-
-<style>
-body{
-    margin:0;
-}
-</style>
-
 </head>
 
 <body>
-
 <a-scene>
 
-    <a-sky
-        src="panoramica.jpg"
-        rotation="0 -90 0">
-    </a-sky>
+  <a-assets>
+    <video
+      id="videoTV"
+      src="MKT_47_Intro.mp4"
+      preload="auto"
+      crossorigin="anonymous">
+    </video>
+  </a-assets>
+
+  <a-sky src="panoramica.jpg" rotation="0 -90 0"></a-sky>
+
+  <!-- Pantalla de vídeo delante del usuario -->
+  <a-video
+    id="pantallaVideo"
+    src="#videoTV"
+    position="0 1.8 -3"
+    width="3.8"
+    height="2.1"
+    visible="false">
+  </a-video>
+
+  <!-- Botón rojo de prueba -->
+  <a-box
+    id="botonVideo"
+    color="red"
+    position="0 1.2 -3"
+    depth="0.1"
+    height="0.35"
+    width="0.35">
+  </a-box>
 
 </a-scene>
+
+<script>
+document.querySelector("#botonVideo").addEventListener("click", function() {
+  const video = document.querySelector("#videoTV");
+  const pantalla = document.querySelector("#pantallaVideo");
+
+  pantalla.setAttribute("visible", "true");
+  video.currentTime = 0;
+  video.play();
+});
+</script>
 
 </body>
 </html>
