@@ -40,6 +40,15 @@
     width="0.35">
   </a-box>
 
+  <!-- Área invisible para tv -->
+  <a-plane
+    id="tvButton"
+    position="0 1.8 -3"
+    width="4"
+    height="2.25"
+    opacity="0">
+  </a-plane>
+
   <!-- Cámara -->
   <a-camera position="0 1.6 0"></a-camera>
   
@@ -51,6 +60,17 @@
 
 <script>
 document.querySelector("#botonVideo").addEventListener("click", function() {
+  const video = document.querySelector("#videoTV");
+  const pantalla = document.querySelector("#pantallaVideo");
+
+  pantalla.setAttribute("visible", "true");
+  video.currentTime = 0;
+  video.play();
+});
+</script>
+
+<script>
+document.querySelector("#tvButton").addEventListener("click", function() {
   const video = document.querySelector("#videoTV");
   const pantalla = document.querySelector("#pantallaVideo");
 
