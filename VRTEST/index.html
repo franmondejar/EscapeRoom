@@ -39,12 +39,12 @@
     opacity="0">
   </a-plane>
 
-  <a-sphere
+  <a-circle
       id="ledTV"
-      position="-0.55 1.05 -3"
+      position="0.25 1.25 -3"
       radius="0.05"
       color="red">
-  </a-sphere>
+  </a-circle>
 
 
   <!-- Cámara -->
@@ -57,7 +57,7 @@
 </a-scene>
 
 <script>
-document.querySelector("#tvButton").addEventListener("click", function() {
+document.querySelector("#ledTV").addEventListener("click", function() {
   const video = document.querySelector("#videoTV");
   const pantalla = document.querySelector("#pantallaVideo");
 
