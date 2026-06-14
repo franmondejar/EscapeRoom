@@ -42,7 +42,7 @@
   <a-sphere
       id="ledTV"
       position="-0.55 1.05 -3"
-      radius="0.03"
+      radius="0.05"
       color="red">
   </a-sphere>
 
@@ -53,49 +53,6 @@
   <!-- Mandos Quest -->
   <a-entity laser-controls="hand: left"></a-entity>
   <a-entity laser-controls="hand: right"></a-entity>
-
-  <!-- Oscurecimiento inicial -->
-  <a-plane
-      id="fondoMensaje"
-      position="0 1.6 -3.5"
-      width="7"
-      height="4"
-      color="black"
-      opacity="0.65">
-  </a-plane>
-
-  <!-- Ventana narrativa -->
-  <a-plane
-      id="ventanaMK0"
-      position="0 1.6 -3.4"
-      width="4"
-      height="2.2"
-      color="#111111">
-  </a-plane>
-
-  <a-text
-      id="textoMK0"
-      value="¿Me recibes?\n\nPerfecto.\n\nHas llegado al piso franco de uno de los analistas de La Corporacion.\n\nEl lugar fue abandonado de forma repentina.\n\nNo tengo acceso a todos los archivos, solo a los digitales, así que debes examina la sala.\nPuede que encontremos respuestas."
-      position="-1.8 2.1 -3.3"
-      width="3.5"
-      color="white">
-  </a-text>
-
-  <a-plane
-      id="btnContinuar"
-      position="0 0.85 -3.3"
-      width="0.9"
-      height="0.25"
-      color="#0066cc">
-  </a-plane>
-
-  <a-text
-      id="textoContinuar"
-      value="CONTINUAR"
-      position="-0.45 0.80 -3.2"
-      width="1.5"
-      color="white">
-  </a-text>
 
 </a-scene>
 
@@ -110,24 +67,7 @@ document.querySelector("#tvButton").addEventListener("click", function() {
   led.setAttribute("visible", false);
 });
 
-document.querySelector("#btnContinuar").addEventListener("click", function() {
 
-    document.querySelector("#fondoMensaje")
-        .setAttribute("visible", false);
-
-    document.querySelector("#ventanaMK0")
-        .setAttribute("visible", false);
-
-    document.querySelector("#textoMK0")
-        .setAttribute("visible", false);
-
-    document.querySelector("#btnContinuar")
-        .setAttribute("visible", false);
-
-    document.querySelector("#textoContinuar")
-    .setAttribute("visible", false);
-
-});
 
 const led = document.querySelector("#ledTV");
 
@@ -137,7 +77,8 @@ setInterval(() => {
 
     led.setAttribute("visible", !visible);
 
-}, 600);
+}, 1000);
+
 </script>
 
 </body>
