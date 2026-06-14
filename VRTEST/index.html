@@ -30,44 +30,65 @@
     visible="false">
   </a-video>
 
-  <!-- Botón rojo de prueba -->
-  <a-box
-    id="botonVideo"
-    color="red"
-    position="0 1.2 -3"
-    depth="0.1"
-    height="0.35"
-    width="0.35">
-  </a-box>
-
   <!-- Área invisible para tv -->
   <a-plane
     id="tvButton"
     position="0 1.8 -3"
     width="4"
     height="2.25"
-    opacity="0">
-  </a-plane>
+    opacity="0"
+></a-plane>
 
   <!-- Cámara -->
   <a-camera position="0 1.6 0"></a-camera>
-  
+
   <!-- Mandos Quest -->
   <a-entity laser-controls="hand: left"></a-entity>
   <a-entity laser-controls="hand: right"></a-entity>
-  
+
+  <!-- Oscurecimiento inicial -->
+  <a-plane
+      id="fondoMensaje"
+      position="0 1.6 -2"
+      width="4"
+      height="2.5"
+      color="black"
+      opacity="0.65">
+  </a-plane>
+
+  <!-- Ventana narrativa -->
+  <a-plane
+      id="ventanaMK0"
+      position="0 1.6 -1.9"
+      width="2.8"
+      height="1.5"
+      color="#222222">
+  </a-plane>
+
+  <a-text
+      id="textoMK0"
+      value="¿Me recibes?\n\nPerfecto.\n\nHas llegado al piso franco de uno de los analistas de La Corporacion.\n\nEl lugar fue abandonado de forma repentina.\n\nExamina la sala.\nPuede que encontremos respuestas."
+      position="-1.25 1.95 -1.8"
+      width="2.5"
+      color="white">
+  </a-text>
+
+  <a-plane
+      id="btnContinuar"
+      position="0 0.95 -1.8"
+      width="0.9"
+      height="0.25"
+      color="#0066cc">
+  </a-plane>
+
+  <a-text
+      value="CONTINUAR"
+      position="-0.35 0.92 -1.75"
+      width="1.5"
+      color="white">
+  </a-text>
+
 </a-scene>
-
-<script>
-document.querySelector("#botonVideo").addEventListener("click", function() {
-  const video = document.querySelector("#videoTV");
-  const pantalla = document.querySelector("#pantallaVideo");
-
-  pantalla.setAttribute("visible", "true");
-  video.currentTime = 0;
-  video.play();
-});
-</script>
 
 <script>
 document.querySelector("#tvButton").addEventListener("click", function() {
@@ -77,6 +98,22 @@ document.querySelector("#tvButton").addEventListener("click", function() {
   pantalla.setAttribute("visible", "true");
   video.currentTime = 0;
   video.play();
+});
+
+document.querySelector("#btnContinuar").addEventListener("click", function() {
+
+    document.querySelector("#fondoMensaje")
+        .setAttribute("visible", false);
+
+    document.querySelector("#ventanaMK0")
+        .setAttribute("visible", false);
+
+    document.querySelector("#textoMK0")
+        .setAttribute("visible", false);
+
+    document.querySelector("#btnContinuar")
+        .setAttribute("visible", false);
+
 });
 </script>
 
