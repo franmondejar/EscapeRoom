@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Actividad VR — Triple Balance</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <a-scene fuente-global>
+
+        <!-- =====================================================
+            BLOQUE: RECURSOS - SALA M1
+            Contiene los archivos utilizados por la escena.
+        ====================================================== -->
+        <a-assets>
+            <img id="sala-m1" src="assets/360/m1_almacen_.png">
+        </a-assets>
+        <!-- FIN BLOQUE: RECURSOS - SALA M1 -->
+
+
+        <!-- =====================================================
+            BLOQUE: PANORÁMICA 360 - SALA M1
+            Imagen de fondo del almacén.
+        ====================================================== -->
+        <a-sky
+            src="#sala-m1"
+            rotation="0 -90 0">
+        </a-sky>
+        <!-- FIN BLOQUE: PANORÁMICA 360 - SALA M1 -->
+
+        <!-- =====================================================
+            BLOQUE: HOTSPOT A-17 - PORTÁTILES
+
+            Posición calibrada sobre el cartel A-17.
+            El contenedor orienta el hotspot.
+            La esfera se sitúa a 4 m del centro de la escena.
+
+            NO MODIFICAR ROTACIÓN SIN RECALIBRAR.
+        ====================================================== -->
+        <a-entity rotation="49 162 0">
+
+            <a-sphere
+                id="hotspot-a17"
+                position="0 0 -4"
+                radius="0.25"
+                color="red"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+        <!-- FIN BLOQUE: HOTSPOT A-17 - PORTÁTILES -->
+
+        <!-- =====================================================
+                BLOQUE: HOTSPOT B-32 - TABLETS
+
+                Posición calibrada sobre el cartel B-32.
+                El contenedor orienta el hotspot.
+                La esfera se sitúa a 4 m del centro de la escena.
+
+                NO MODIFICAR ROTACIÓN SIN RECALIBRAR.
+            ====================================================== -->
+            <a-entity rotation="45 233 0">
+
+                <a-sphere
+                    id="hotspot-b32"
+                    position="0 0 -4"
+                    radius="0.25"
+                    color="blue"
+                    opacity="0"
+                    class="interactivo">
+                </a-sphere>
+
+            </a-entity>
+            <!-- FIN BLOQUE: HOTSPOT B-32 - TABLETS -->
+
+            <!-- =====================================================
+                BLOQUE: HOTSPOT C-08 - SOBREMESA
+
+                Posición calibrada sobre el cartel C-08.
+                El contenedor orienta el hotspot.
+                La esfera se sitúa a 4 m del centro de la escena.
+
+                NO MODIFICAR ROTACIÓN SIN RECALIBRAR.
+            ====================================================== -->
+            <a-entity rotation="49 194 0">
+
+                <a-sphere
+                    id="hotspot-c08"
+                    position="0 0 -4"
+                    radius="0.25"
+                    color="green"
+                    opacity="0"
+                    class="interactivo">
+                </a-sphere>
+
+            </a-entity>
+            <!-- FIN BLOQUE: HOTSPOT C-08 - SOBREMESA -->
+
+            <!-- =====================================================
+                BLOQUE: HOTSPOT TERMINAL - REGISTRAR PROPUESTA
+
+                Posición calibrada sobre la pantalla del ordenador.
+                El contenedor orienta el hotspot.
+                La esfera se sitúa a 4 m del centro de la escena.
+
+                NO MODIFICAR ROTACIÓN SIN RECALIBRAR.
+            ====================================================== -->
+            <a-entity rotation="12 331 0">
+
+                <a-sphere
+                    id="hotspot-terminal"
+                    position="0 0 -4"
+                    radius="0.40"
+                    color="yellow"
+                    opacity="0"
+                    class="interactivo">
+                </a-sphere>
+
+            </a-entity>
+            <!-- FIN BLOQUE: HOTSPOT TERMINAL - REGISTRAR PROPUESTA -->
+
+            <!-- ==================================================
+                HOTSPOT DE CALIBRACIÓN — TALLER DE RECUPERACIÓN
+
+                TEMPORAL:
+                Se muestra en rojo únicamente para ajustar
+                su posición sobre el acceso al taller.
+
+                Cuando esté calibrado:
+                - conservaremos la rotation;
+                - cambiaremos opacity a 0;
+                - lo conectaremos al panel de acceso.
+            =================================================== -->
+
+            <a-entity
+                id="contenedor-hotspot-taller"
+                rotation="30 -80 0">
+
+                <a-sphere
+                    id="hotspot-taller"
+                    position="0 0 -4"
+                    radius="0.35"
+                    color="red"
+                    opacity="0">
+                </a-sphere>
+
+                <!-- ==================================================
+                    PANEL VISUAL DE ACCESO — TALLER DE RECUPERACIÓN
+
+                    Aparece únicamente después de pulsar CONTINUAR.
+
+                    Este propio panel es el hotspot:
+                    al pulsarlo abre el panel de introducción del código PV.
+                =================================================== -->
+
+                <a-plane
+                    id="indicador-taller"
+                    position="0 0 -3.98"
+                    width="0.82"
+                    height="0.58"
+                    color="#222222"
+                    opacity="0.88"
+                    visible="false">
+
+                    <!-- CONTORNO -->
+                    <a-plane
+                        width="0.76"
+                        height="0.52"
+                        color="#F2F2F2"
+                        position="0 0 0.005">
+                    </a-plane>
+
+                    <!-- INTERIOR OSCURO -->
+                    <a-plane
+                        width="0.71"
+                        height="0.47"
+                        color="#222222"
+                        position="0 0 0.01">
+                    </a-plane>
+
+                    <!-- TEXTO -->
+                    <a-text
+                        value="ACCESO"
+                        color="#F2F2F2"
+                        align="center"
+                        width="3"
+                        position="0 0.2 0.5">
+                    </a-text>
+
+                    <!-- SÍMBOLO -->
+                    <a-text
+                        value="[ + ]"
+                        color="#F2F2F2"
+                        align="center"
+                        width="0.65"
+                        position="0 -0.17 0.02">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN PANEL VISUAL DE ACCESO -->
+
+                <!-- FIN INDICADOR VISUAL — PANEL DE ACCESO -->
+
+            </a-entity>
+
+            <!-- FIN HOTSPOT DE CALIBRACIÓN — TALLER DE RECUPERACIÓN -->
+
+            <!-- =====================================================
+                BLOQUE: PANEL DE ACCESO — TALLER DE RECUPERACIÓN
+
+                Panel para introducir el código PV generado en M1.
+
+                IMPORTANTE:
+                - El código identifica la propuesta registrada.
+                - NO representa una respuesta correcta.
+                - La lógica de recuperación se conectará después.
+            ====================================================== -->
+
+            <a-entity
+                id="panel-acceso-taller"
+                visible="false">
+
+                <!-- FONDO DEL PANEL -->
+                <a-plane
+                    width="2.4"
+                    height="2.15"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="ACCESO - TALLER DE RECUPERACIÓN"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 0.78 0.02">
+                </a-text>
+
+
+                <!-- INSTRUCCIÓN -->
+                <a-text
+                    value="Código de propuesta"
+                    color="#444444"
+                    align="center"
+                    width="1.6"
+                    position="0 0.48 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                    BLOQUE: CÓDIGO PV
+
+                    Los valores 00 son únicamente el estado inicial
+                    del selector. No representan una propuesta.
+                ================================================== -->
+
+                <a-text
+                    value="PV -"
+                    color="#222222"
+                    align="center"
+                    width="1.2"
+                    position="-0.78 0.05 0.02">
+                </a-text>
+
+                <!-- =================================================
+                    SELECTOR 1 — CÓDIGO PV
+                ================================================== -->
+
+                <!-- BOTÓN + -->
+                <a-plane
+                    id="aumentar-pv-1"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.32 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- BOTÓN - -->
+                <a-plane
+                    id="disminuir-pv-1"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.32 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 1 — CÓDIGO PV -->
+
+
+                <!-- BLOQUE NUMÉRICO 1 -->
+                <a-text
+                    id="codigo-pv-1"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="-0.32 0.05 0.02">
+                </a-text>
+
+
+                <!-- SEPARADOR -->
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="-0.02 0.05 0.02">
+                </a-text>
+
+                <!-- =================================================
+                    SELECTOR 2 — CÓDIGO PV
+                ================================================== -->
+
+                <!-- BOTÓN + -->
+                <a-plane
+                    id="aumentar-pv-2"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.28 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- BOTÓN - -->
+                <a-plane
+                    id="disminuir-pv-2"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.28 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 2 — CÓDIGO PV -->
+
+
+                <!-- BLOQUE NUMÉRICO 2 -->
+                <a-text
+                    id="codigo-pv-2"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.28 0.05 0.02">
+                </a-text>
+
+
+                <!-- SEPARADOR -->
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="0.56 0.05 0.02">
+                </a-text>
+
+                <!-- =================================================
+                    SELECTOR 3 — CÓDIGO PV
+                ================================================== -->
+
+                <!-- BOTÓN + -->
+                <a-plane
+                    id="aumentar-pv-3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.84 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- BOTÓN - -->
+                <a-plane
+                    id="disminuir-pv-3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.84 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 3 — CÓDIGO PV -->
+
+
+                <!-- BLOQUE NUMÉRICO 3 -->
+                <a-text
+                    id="codigo-pv-3"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.84 0.05 0.02">
+                </a-text>
+
+
+                <!-- BOTÓN ACCEDER -->
+                <a-plane
+                    id="boton-acceder-taller"
+                    width="1.15"
+                    height="0.3"
+                    color="#D9D9D9"
+                    position="0 -0.62 0.02">
+
+                    <a-text
+                        value="ACCEDER"
+                        color="#222222"
+                        align="center"
+                        width="1.5"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                
+
+
+                <!-- BOTÓN CERRAR -->
+                <a-plane
+                    id="cerrar-panel-taller"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="1.02 0.92 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: PANEL DE ACCESO — TALLER DE RECUPERACIÓN -->
+
+
+            <!-- =====================================================
+                BLOQUE: VENTANA RESULTADO DE ACCESO — TALLER
+
+                Ventana independiente del panel de introducción
+                del código PV.
+
+                Se utilizará para mostrar:
+                - ACCESO AUTORIZADO
+                - CÓDIGO NO RECONOCIDO
+
+                Inicialmente permanece oculta.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-resultado-taller"
+                visible="false">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="2.25"
+                    height="1.25"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- MENSAJE DE RESULTADO -->
+                <a-text
+                    id="mensaje-resultado-taller"
+                    value=""
+                    color="#222222"
+                    align="center"
+                    width="2.2"
+                    position="0 0.12 0.03">
+                </a-text>
+
+
+                <!-- BOTÓN CERRAR
+                    Se utilizará en el caso de código no reconocido.
+                    Su comportamiento se programará después.
+                -->
+                <a-plane
+                    id="cerrar-resultado-taller"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="0.95 0.48 0.03">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: VENTANA RESULTADO DE ACCESO — TALLER -->
+        
+
+        <!-- =====================================================
+            BLOQUE: CÁMARA E INTERACCIÓN
+
+            Cámara del operador.
+            El cursor permite interactuar únicamente con
+            elementos que tengan class="interactivo".
+        ====================================================== -->
+        <a-camera
+            position="0 1.6 0"
+            look-controls="enabled: true">
+
+            <a-cursor
+                id="cursor-principal"
+                raycaster="objects: .interactivo"
+                cursor="rayOrigin: mouse">
+            </a-cursor>
+
+            <!-- =====================================================
+                BLOQUE: VENTANA A-17 - PORTÁTILES
+
+                Ventana informativa del lote A-17.
+                Inicialmente permanece oculta.
+            ====================================================== -->
+            <a-entity
+                id="ventana-a17"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- Fondo de la ventana -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <!-- Título -->
+                <a-text
+                    value="A-17 · PORTÁTILES"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+                <!-- Información -->
+                <a-text
+                    value="Dispositivos funcionales: 16"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+                <!-- Botón cerrar -->
+                <a-plane
+                    id="cerrar-a17"
+                    class="interactivo"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#111111"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+            <!-- FIN BLOQUE: VENTANA A-17 - PORTÁTILES -->
+
+            <!-- =====================================================
+                BLOQUE: VENTANA B-32 - TABLETS
+
+                Ventana informativa del lote B-32.
+                Al estar dentro de la cámara, aparece delante
+                del operador independientemente de dónde mire.
+                Inicialmente permanece oculta.
+            ====================================================== -->
+            <a-entity
+                id="ventana-b32"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- Fondo de la ventana -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <!-- Título -->
+                <a-text
+                    value="B-32 · TABLETS"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+                <!-- Información -->
+                <a-text
+                    value="Dispositivos funcionales: 22"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+                <!-- Botón cerrar -->
+                <a-plane
+                    id="cerrar-b32"
+                    class="interactivo"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#111111"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+            <!-- FIN BLOQUE: VENTANA B-32 - TABLETS -->
+
+            <!-- =====================================================
+                BLOQUE: VENTANA C-08 - SOBREMESA
+
+                Ventana informativa del lote C-08.
+                Al estar dentro de la cámara, aparece delante
+                del operador independientemente de dónde mire.
+
+                Inicialmente permanece oculta.
+            ====================================================== -->
+            <a-entity
+                id="ventana-c08"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- Fondo de la ventana -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <!-- Título -->
+                <a-text
+                    value="C-08 · SOBREMESA"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+                <!-- Información -->
+                <a-text
+                    value="Dispositivos funcionales: 11"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+                <!-- Botón cerrar -->
+                <a-plane
+                    id="cerrar-c08"
+                    class="interactivo"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#111111"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+            <!-- FIN BLOQUE: VENTANA C-08 - SOBREMESA -->
+
+            <!-- =====================================================
+                BLOQUE: VENTANA TERMINAL - REGISTRAR PROPUESTA
+
+                Panel de selección de necesidades de M1.
+                Permite mostrar las tres opciones disponibles.
+
+                IMPORTANTE:
+                - Todavía NO contiene lógica de selección.
+                - Todavía NO llama al motor.
+                - Inicialmente permanece oculto.
+            ====================================================== -->
+            <a-entity
+                id="ventana-terminal"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- Fondo principal -->
+                <a-plane
+                    width="2.2"
+                    height="2.55"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                    ELEMENTO: TÍTULO DEL TERMINAL
+                ================================================== -->
+                <a-text
+                    value="REGISTRAR PROPUESTA"
+                    color="#111111"
+                    align="center"
+                    width="1.8"
+                    position="0 0.60 0.01">
+                </a-text>
+
+
+                <!-- =================================================
+                    ELEMENTO: INSTRUCCIÓN M1
+                ================================================== -->
+                <a-text
+                    value="Selecciona dos necesidades"
+                    color="#333333"
+                    align="center"
+                    width="1.55"
+                    position="0 0.38 0.01">
+                </a-text>
+
+
+                <!-- =================================================
+                    ELEMENTO: BOTÓN PORTÁTILES
+                ================================================== -->
+                <a-plane
+                    id="boton-portatiles"
+                    class="interactivo"
+                    width="1.35"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0 0.12 0.02">
+
+                    <a-text
+                        value="PORTÁTILES"
+                        color="#111111"
+                        align="center"
+                        width="1.25"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                    ELEMENTO: BOTÓN TABLETS
+                ================================================== -->
+                <a-plane
+                    id="boton-tablets"
+                    class="interactivo"
+                    width="1.35"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0 -0.16 0.02">
+
+                    <a-text
+                        value="TABLETS"
+                        color="#111111"
+                        align="center"
+                        width="1.25"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                    ELEMENTO: BOTÓN SOBREMESA
+                ================================================== -->
+                <a-plane
+                    id="boton-sobremesa"
+                    class="interactivo"
+                    width="1.35"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0 -0.44 0.02">
+
+                    <a-text
+                        value="SOBREMESA"
+                        color="#111111"
+                        align="center"
+                        width="1.25"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                    ELEMENTO: BOTÓN REGISTRAR
+                ================================================== -->
+                <a-plane
+                    id="boton-registrar"
+                    class="interactivo"
+                    width="0.95"
+                    height="0.24"
+                    color="#BDBDBD"
+                    position="0 -0.70 0.02">
+
+                    <a-text
+                        value="REGISTRAR"
+                        color="#111111"
+                        align="center"
+                        width="1.15"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                    ELEMENTO: RESPUESTA DEL MOTOR M1
+
+                    Muestra el resultado devuelto por
+                    registrarPropuesta().
+
+                    Inicialmente no muestra ningún mensaje.
+                    La interfaz modificará su contenido después
+                    de recibir la respuesta del motor.
+                ================================================== -->
+                <a-text
+                    id="respuesta-m1"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.55"
+                    position="0 -1.02 0.02">
+                </a-text>
+
+                <!-- FIN ELEMENTO: RESPUESTA DEL MOTOR M1 -->
+
+                <!-- =================================================
+                    BLOQUE: DECISIÓN TRAS REGISTRO VÁLIDO - M1
+
+                    Estos controles permanecen ocultos hasta que
+                    registrarPropuesta() devuelve valida: true.
+
+                    No realizan ninguna validación de negocio.
+                ================================================== -->
+
+                <a-entity
+                    id="decision-post-registro-m1"
+                    visible="false"
+                    position="0 -1.16 0.02">
+
+                    <!-- BOTÓN: CONTINUAR -->
+                    <a-plane
+                        id="boton-continuar-m1"
+                        width="0.85"
+                        height="0.28"
+                        position="-0.48 0 0"
+                        color="#D9D9D9">
+
+                        <a-text
+                            value="CONTINUAR"
+                            color="#222222"
+                            align="center"
+                            width="1.4"
+                            position="0 0 0.01">
+                        </a-text>
+
+                    </a-plane>
+                    <!-- FIN BOTÓN: CONTINUAR -->
+
+
+                    <!-- BOTÓN: CAMBIAR -->
+                    <a-plane
+                        id="boton-cambiar-m1"
+                        width="0.85"
+                        height="0.28"
+                        position="0.48 0 0"
+                        color="#D9D9D9">
+
+                        <a-text
+                            value="CAMBIAR"
+                            color="#222222"
+                            align="center"
+                            width="1.4"
+                            position="0 0 0.01">
+                        </a-text>
+
+                    </a-plane>
+                    <!-- FIN BOTÓN: CAMBIAR -->
+
+                </a-entity>
+
+                <!-- FIN BLOQUE: DECISIÓN TRAS REGISTRO VÁLIDO - M1 -->
+
+
+                <!-- =================================================
+                    ELEMENTO: BOTÓN CERRAR
+                ================================================== -->
+                <a-plane
+                    id="cerrar-terminal"
+                    class="interactivo"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.91 0.68 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#111111"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+            <!-- FIN BLOQUE: VENTANA TERMINAL - REGISTRAR PROPUESTA -->
+
+            
+
+        </a-camera>
+        <!-- FIN BLOQUE: CÁMARA E INTERACCIÓN -->
+
+
+    </a-scene>
+
+
+    <!-- Datos y lógica de la actividad -->
+    <script src="constants.js"></script>
+    <script src="state.js"></script>
+    <script src="script.js"></script>
+
+    <!-- =====================================================
+        BLOQUE: FUENTE GLOBAL A-FRAME
+        Aplica Roboto MSDF a todos los <a-text>.
+    ====================================================== -->
+    <script src="fuente-aframe.js"></script>
+    <!-- FIN BLOQUE: FUENTE GLOBAL A-FRAME -->
+
+    <!-- =====================================================
+        BLOQUE: INTERFAZ M1
+        Capa visual e interactiva del Módulo 1.
+    ====================================================== -->
+    <script src="interfaz-m1.js"></script>
+    <!-- FIN BLOQUE: INTERFAZ M1 -->
+
+</body>
+
+</html>

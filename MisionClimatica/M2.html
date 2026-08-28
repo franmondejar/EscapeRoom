@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Misión climática — M2 Taller de Recuperación</title>
+
+    <!-- =====================================================
+         BLOQUE: A-FRAME
+         Librería principal para la escena VR.
+    ====================================================== -->
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <!-- FIN BLOQUE: A-FRAME -->
+
+    <!-- =====================================================
+         BLOQUE: ESTILOS GENERALES
+         Se mantiene la hoja de estilos común del proyecto.
+    ====================================================== -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FIN BLOQUE: ESTILOS GENERALES -->
+
+</head>
+
+<body>
+
+    <a-scene fuente-global>
+
+        <!-- =====================================================
+             BLOQUE: RECURSOS - SALA M2
+             Contiene los archivos utilizados por la escena.
+        ====================================================== -->
+        <a-assets>
+
+            <img
+                id="sala-m2"
+                src="assets/360/m2_taller_.png"
+            >
+
+        </a-assets>
+        <!-- FIN BLOQUE: RECURSOS - SALA M2 -->
+
+
+        <!-- =====================================================
+             BLOQUE: PANORÁMICA 360 - SALA M2
+             Imagen de fondo del Taller de Recuperación.
+
+             La rotación podrá ajustarse posteriormente
+             para establecer la orientación inicial adecuada.
+        ====================================================== -->
+        <a-sky
+            src="#sala-m2"
+            rotation="0 -90 0">
+        </a-sky>
+        <!-- FIN BLOQUE: PANORÁMICA 360 - SALA M2 -->
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - PORTÁTILES
+
+             TEMPORAL:
+             Se muestra en rojo únicamente para localizar
+             y calibrar la zona correspondiente al lote
+             de portátiles averiados.
+
+             Cuando quede correctamente situado:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - lo conectaremos a su ventana informativa.
+
+             NO MODIFICAR UNA VEZ CERTIFICADA SU POSICIÓN
+             SIN RECALIBRAR.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-portatiles"
+            rotation="5 108 0">
+
+            <a-sphere
+                id="hotspot-portatiles"
+                position="0 0 -4"
+                radius="0.40"
+                color="red"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - PORTÁTILES -->
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - TABLETS
+
+             TEMPORAL:
+             Se muestra en azul únicamente para localizar
+             y calibrar la zona correspondiente al lote
+             de tablets averiadas.
+
+             Cuando quede correctamente situado:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - lo conectaremos a su ventana informativa.
+
+             NO MODIFICAR UNA VEZ CERTIFICADA SU POSICIÓN
+             SIN RECALIBRAR.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-tablets"
+            rotation="20 40 0">
+
+            <a-sphere
+                id="hotspot-tablets"
+                position="0 0 -4"
+                radius="0.40"
+                color="blue"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - TABLETS -->
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - SOBREMESA
+
+             TEMPORAL:
+             Se muestra en verde únicamente para localizar
+             y calibrar la zona correspondiente al lote
+             de equipos de sobremesa averiados.
+
+             Cuando quede correctamente situado:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - lo conectaremos a su ventana informativa.
+
+             NO MODIFICAR UNA VEZ CERTIFICADA SU POSICIÓN
+             SIN RECALIBRAR.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-sobremesa"
+            rotation="20 -69 0">
+
+            <a-sphere
+                id="hotspot-sobremesa"
+                position="0 0 -4"
+                radius="0.40"
+                color="green"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - SOBREMESA -->
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - TERMINAL M2
+
+             TEMPORAL:
+             Se muestra en amarillo únicamente para localizar
+             y calibrar la pantalla que funcionará como terminal
+             de registro del Taller de Recuperación.
+
+             Cuando quede correctamente situado:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - lo conectaremos a la terminal M2.
+
+             NO MODIFICAR UNA VEZ CERTIFICADA SU POSICIÓN
+             SIN RECALIBRAR.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-terminal-m2"
+            rotation="24 -97 0">
+
+            <a-sphere
+                id="hotspot-terminal-m2"
+                position="0 0 -4"
+                radius="0.40"
+                color="yellow"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - TERMINAL M2 -->
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - SALIDA M2
+
+             TEMPORAL:
+             Se muestra en magenta para localizar y calibrar
+             la puerta SALIDA del Taller de Recuperación.
+
+             Una vez certificada su posición:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - se convertirá en el acceso al control de salida.
+
+             La puerta NO determinará si una estrategia es correcta.
+             Posteriormente comprobará únicamente que el código
+             introducido coincide con el código confirmado en M2.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-salida-m2"
+            rotation="30 -190 0">
+
+            <a-sphere
+                id="hotspot-salida-m2"
+                position="0 0 -4"
+                radius="0.40"
+                color="magenta"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - SALIDA M2 -->
+
+
+        <!-- =====================================================
+             BLOQUE: CÁMARA - OPERADOR
+             Punto de vista del usuario dentro del taller.
+
+             En esta primera prueba no se incorpora todavía
+             cursor ni ningún elemento interactivo.
+        ====================================================== -->
+        <a-camera
+            position="0 1.6 0"
+            look-controls="enabled: true">
+
+            <!-- =====================================================
+                 BLOQUE: CURSOR E INTERACCIÓN
+
+                 El raycaster únicamente detecta elementos
+                 con class="interactivo".
+            ====================================================== -->
+
+            <a-cursor
+                id="cursor-principal"
+                raycaster="objects: .interactivo"
+                cursor="rayOrigin: mouse">
+            </a-cursor>
+
+            <!-- FIN BLOQUE: CURSOR E INTERACCIÓN -->
+
+            <!-- =====================================================
+                 BLOQUE: VENTANA - PORTÁTILES M2
+
+                 Ventana informativa del lote de portátiles averiados.
+                 Inicialmente permanece oculta.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-portatiles-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="PORTÁTILES"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+
+                <!-- INFORMACIÓN -->
+                <a-text
+                    value="Equipos averiados: 4"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+
+                <!-- BOTÓN CERRAR -->
+                <a-plane
+                    id="cerrar-portatiles-m2"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: VENTANA - PORTÁTILES M2 -->   
+
+            <!-- =====================================================
+                 BLOQUE: VENTANA - TABLETS M2
+
+                 Ventana informativa del lote de tablets averiadas.
+                 Inicialmente permanece oculta.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-tablets-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="TABLETS"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+                <!-- INFORMACIÓN -->
+                <a-text
+                    value="Equipos averiados: 3"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+                <!-- BOTÓN CERRAR -->
+                <a-plane
+                    id="cerrar-tablets-m2"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: VENTANA - TABLETS M2 -->
+
+            <!-- =====================================================
+                 BLOQUE: VENTANA - SOBREMESA M2
+
+                 Ventana informativa del lote de equipos
+                 de sobremesa averiados.
+                 Inicialmente permanece oculta.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-sobremesa-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="1.8"
+                    height="0.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="SOBREMESA"
+                    color="#111111"
+                    align="center"
+                    width="1.5"
+                    position="0 0.22 0.01">
+                </a-text>
+
+                <!-- INFORMACIÓN -->
+                <a-text
+                    value="Equipos averiados: 4"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.05 0.01">
+                </a-text>
+
+                <!-- BOTÓN CERRAR -->
+                <a-plane
+                    id="cerrar-sobremesa-m2"
+                    width="0.22"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.73 0.32 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: VENTANA - SOBREMESA M2 -->
+
+            <!-- =====================================================
+                 BLOQUE: TERMINAL - MODELO CIRCULAR M2
+
+                 Permite al operador seleccionar una estrategia
+                 independiente para cada lote:
+
+                 P = Reparar / renovar
+                 C = Recuperar componentes
+                 M = Recuperar materiales
+
+                 IMPORTANTE:
+                 Este bloque contiene únicamente controles visuales.
+                 La validación corresponde al motor lógico.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-terminal-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- =================================================
+                     FONDO DE LA TERMINAL
+                ================================================== -->
+
+                <a-plane
+                    width="2.6"
+                    height="2.9"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                     TÍTULO
+                ================================================== -->
+
+                <a-text
+                    value="MODELO CIRCULAR\nDispone de un límite máximo de 20 horas."
+                    color="#111111"
+                    align="center"
+                    width="2"
+                    position="0 0.88 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     CABECERA DE ESTRATEGIAS
+                ================================================== -->
+
+                <a-text
+                    value="P"
+                    color="#444444"
+                    align="center"
+                    width="1"
+                    position="0.25 0.55 0.02">
+                </a-text>
+
+                <a-text
+                    value="C"
+                    color="#444444"
+                    align="center"
+                    width="1"
+                    position="0.65 0.55 0.02">
+                </a-text>
+
+                <a-text
+                    value="M"
+                    color="#444444"
+                    align="center"
+                    width="1"
+                    position="1.05 0.55 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     FILA 1 - PORTÁTILES
+                ================================================== -->
+
+                <a-text
+                    value="PORTATILES"
+                    color="#222222"
+                    align="left"
+                    width="1.35"
+                    position="-1.12 0.28 0.02">
+                </a-text>
+
+                <!-- P -->
+                <a-plane
+                    id="m2-portatiles-p"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.25 0.30 0.02">
+
+                    <a-text
+                        value="P"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- C -->
+                <a-plane
+                    id="m2-portatiles-c"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.65 0.30 0.02">
+
+                    <a-text
+                        value="C"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- M -->
+                <a-plane
+                    id="m2-portatiles-m"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="1.05 0.30 0.02">
+
+                    <a-text
+                        value="M"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN FILA 1 - PORTÁTILES -->
+
+
+                <!-- =================================================
+                     FILA 2 - TABLETS
+                ================================================== -->
+
+                <a-text
+                    value="TABLETS"
+                    color="#222222"
+                    align="left"
+                    width="1.35"
+                    position="-1.12 -0.08 0.02">
+                </a-text>
+
+                <!-- P -->
+                <a-plane
+                    id="m2-tablets-p"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.25 -0.06 0.02">
+
+                    <a-text
+                        value="P"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- C -->
+                <a-plane
+                    id="m2-tablets-c"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.65 -0.06 0.02">
+
+                    <a-text
+                        value="C"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- M -->
+                <a-plane
+                    id="m2-tablets-m"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="1.05 -0.06 0.02">
+
+                    <a-text
+                        value="M"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN FILA 2 - TABLETS -->
+
+
+                <!-- =================================================
+                     FILA 3 - SOBREMESA
+                ================================================== -->
+
+                <a-text
+                    value="SOBREMESA"
+                    color="#222222"
+                    align="left"
+                    width="1.35"
+                    position="-1.12 -0.44 0.02">
+                </a-text>
+
+                <!-- P -->
+                <a-plane
+                    id="m2-sobremesa-p"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.25 -0.42 0.02">
+
+                    <a-text
+                        value="P"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- C -->
+                <a-plane
+                    id="m2-sobremesa-c"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="0.65 -0.42 0.02">
+
+                    <a-text
+                        value="C"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- M -->
+                <a-plane
+                    id="m2-sobremesa-m"
+                    width="0.30"
+                    height="0.27"
+                    color="#D9D9D9"
+                    position="1.05 -0.42 0.02">
+
+                    <a-text
+                        value="M"
+                        color="#222222"
+                        align="center"
+                        width="1"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN FILA 3 - SOBREMESA -->
+
+
+                <!-- =================================================
+                     BOTÓN REGISTRAR
+
+                     En esta fase existe visualmente pero todavía
+                     NO llama al motor lógico.
+                ================================================== -->
+
+                <a-plane
+                    id="boton-registrar-m2"
+                    width="1.15"
+                    height="0.30"
+                    color="#D9D9D9"
+                    position="0 -0.72 0.02">
+
+                    <a-text
+                        value="REGISTRAR"
+                        color="#222222"
+                        align="center"
+                        width="1.5"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BOTÓN REGISTRAR -->
+
+                <!-- =================================================
+                     BLOQUE: FEEDBACK DEL MOTOR - M2
+
+                     La interfaz únicamente representa aquí
+                     la respuesta recibida desde
+                     registrarModeloCircular(...).
+
+                     NO realiza cálculos propios.
+                ================================================== -->
+
+                <a-text
+                    id="feedback-m2-estado"
+                    value=""
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 -1.00 0.03">
+                </a-text>
+
+                <a-text
+                    id="feedback-m2-horas"
+                    value=""
+                    color="#222222"
+                    align="center"
+                    width="1.7"
+                    position="0 -1.14 0.03">
+                </a-text>
+
+                <a-text
+                    id="feedback-m2-codigo"
+                    value=""
+                    color="#222222"
+                    align="center"
+                    width="1.7"
+                    position="0 -1.28 0.03">
+                </a-text>
+
+                <!-- FIN BLOQUE: FEEDBACK DEL MOTOR - M2 -->
+
+                <!-- =================================================
+                     BLOQUE: BOTÓN FINALIZAR MÓDULO 2
+
+                     Inicialmente permanece oculto.
+
+                     Solo se mostrará después de que el motor lógico
+                     haya registrado correctamente el modelo circular.
+
+                     Este botón NO valida ni calcula decisiones.
+                ================================================== -->
+
+                <a-plane
+                    id="boton-finalizar-m2"
+                    visible="false"
+                    width="0.95"
+                    height="0.30"
+                    color="#D9D9D9"
+                    position="-0.55 -1.48 0.03">
+
+                    <a-text
+                        value="CONFIRMAR"
+                        color="#222222"
+                        align="center"
+                        width="1.35"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BLOQUE: BOTÓN FINALIZAR MÓDULO 2 -->
+
+                
+                <!-- =================================================
+                     BLOQUE: BOTÓN CAMBIAR DECISIÓN - M2
+
+                     Solo aparece después de un registro válido.
+
+                     Permite descartar la propuesta visual actual
+                     y volver a seleccionar las estrategias P/C/M.
+
+                     NO determina ni recomienda ninguna estrategia.
+                ================================================== -->
+
+                <a-plane
+                    id="boton-cambiar-m2"
+                    visible="false"
+                    width="0.95"
+                    height="0.30"
+                    color="#D9D9D9"
+                    position="0.65 -1.48 0.03">
+
+                    <a-text
+                        value="CAMBIAR"
+                        color="#222222"
+                        align="center"
+                        width="1.55"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BLOQUE: BOTÓN CAMBIAR DECISIÓN - M2 -->
+
+
+                <!-- =================================================
+                     BOTÓN CERRAR
+                ================================================== -->
+
+                <a-plane
+                    id="cerrar-terminal-m2"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="1.12 0.94 0.03">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BOTÓN CERRAR -->
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: TERMINAL - MODELO CIRCULAR M2 -->
+
+            <!-- =====================================================
+                 BLOQUE: VENTANA DE CIERRE - MÓDULO 2
+
+                 Se muestra después de finalizar M2.
+
+                 Recuerda al grupo que debe anotar el código
+                 generado por el motor en su hoja de control
+                 y dirigirse posteriormente a la puerta SALIDA.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-final-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="2.25"
+                    height="1.45"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="MODULO 2 COMPLETADO"
+                    color="#111111"
+                    align="center"
+                    width="1.85"
+                    position="0 0.48 0.02">
+                </a-text>
+
+
+                <!-- INSTRUCCIÓN -->
+                <a-text
+                    value="Anotad en vuestra hoja de control:"
+                    color="#222222"
+                    align="center"
+                    width="1.65"
+                    position="0 0.18 0.02">
+                </a-text>
+
+
+                <!-- CÓDIGO GENERADO -->
+                <a-text
+                    id="codigo-final-m2"
+                    value=""
+                    color="#111111"
+                    align="center"
+                    width="2"
+                    position="0 -0.08 0.02">
+                </a-text>
+
+
+                <!-- INDICACIÓN DE SALIDA -->
+                <a-text
+                    value="Dirigíos a la SALIDA para continuar."
+                    color="#222222"
+                    align="center"
+                    width="1.55"
+                    position="0 -0.37 0.02">
+                </a-text>
+
+
+                <!-- BOTÓN CERRAR -->
+                <a-plane
+                    id="cerrar-final-m2"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="0.94 0.58 0.03">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: VENTANA DE CIERRE - MÓDULO 2 -->
+
+            <!-- FIN BLOQUE: VENTANA DE CIERRE - MÓDULO 2 -->
+
+
+            <!-- =====================================================
+                AQUÍ PEGAMOS EL NUEVO CONTROL DE SALIDA
+            ====================================================== -->
+
+            <!-- =====================================================
+                 BLOQUE: CONTROL DE SALIDA - MÓDULO 2
+
+                 Diseño basado en el panel de acceso de M1.
+
+                 El grupo reconstruye el código M2 mediante
+                 tres selectores P / C / M.
+
+                 COMPROBAR:
+                 contrastará el código introducido con el código
+                 previamente confirmado por el propio grupo.
+
+                 CAMBIAR:
+                 permitirá regresar a la terminal y modificar
+                 la decisión.
+
+                 NO EXISTEN COMBINACIONES CORRECTAS PREDEFINIDAS.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-salida-m2"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- =================================================
+                     FONDO DEL PANEL
+                ================================================== -->
+
+                <a-plane
+                    width="2.4"
+                    height="2.15"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                     TÍTULO
+                ================================================== -->
+
+                <a-text
+                    value="CONTROL DE SALIDA"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 0.78 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     INSTRUCCIÓN
+                ================================================== -->
+
+                <a-text
+                    value="Introduce el codigo M2 anotado en vuestra hoja"
+                    color="#444444"
+                    align="center"
+                    width="1.6"
+                    position="0 0.48 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     PREFIJO DEL CÓDIGO
+                ================================================== -->
+
+                <a-text
+                    value="M2 -"
+                    color="#222222"
+                    align="center"
+                    width="1.2"
+                    position="-0.78 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 1 - PORTÁTILES
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-1"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.32 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <a-text
+                    id="codigo-m2-1"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="-0.32 0.05 0.02">
+                </a-text>
+
+
+                <a-plane
+                    id="disminuir-m2-1"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.32 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 1 - PORTÁTILES -->
+
+
+                <!-- SEPARADOR -->
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="-0.02 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 2 - TABLETS
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-2"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.28 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <a-text
+                    id="codigo-m2-2"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.28 0.05 0.02">
+                </a-text>
+
+
+                <a-plane
+                    id="disminuir-m2-2"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.28 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 2 - TABLETS -->
+
+
+                <!-- SEPARADOR -->
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="0.56 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 3 - SOBREMESA
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.84 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <a-text
+                    id="codigo-m2-3"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.84 0.05 0.02">
+                </a-text>
+
+
+                <a-plane
+                    id="disminuir-m2-3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.84 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 3 - SOBREMESA -->
+
+
+                <!-- =================================================
+                     FEEDBACK
+                ================================================== -->
+
+                <a-text
+                    id="feedback-salida-m2"
+                    value=""
+                    color="#222222"
+                    align="center"
+                    width="1.7"
+                    position="0 -0.42 0.03">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTÓN COMPROBAR
+                ================================================== -->
+
+                <a-plane
+                    id="boton-comprobar-salida-m2"
+                    width="0.85"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0 -0.72 0.02">
+
+                    <a-text
+                        value="COMPROBAR"
+                        color="#222222"
+                        align="center"
+                        width="1.25"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                
+                <!-- =================================================
+                     BOTÓN CERRAR
+                ================================================== -->
+
+                <a-plane
+                    id="cerrar-salida-m2"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="1.02 0.92 0.02">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: CONTROL DE SALIDA - MÓDULO 2 -->
+
+
+            
+
+        </a-camera>
+        <!-- FIN BLOQUE: CÁMARA - OPERADOR -->
+
+
+    </a-scene>
+
+
+    <!-- =====================================================
+         BLOQUE: MOTOR LÓGICO COMÚN
+         M2 utilizará el mismo motor lógico de la actividad.
+
+         IMPORTANTE:
+         Estos archivos contienen la lógica de negocio.
+         m2.html no debe replicarla.
+    ====================================================== -->
+    <script src="constants.js"></script>
+    <script src="state.js"></script>
+    <script src="script.js"></script>
+    <!-- FIN BLOQUE: MOTOR LÓGICO COMÚN -->
+
+
+    <!-- =====================================================
+         BLOQUE: INTERFAZ M2
+
+         Se activará cuando comencemos a incorporar
+         elementos interactivos al Taller de Recuperación.
+
+         Por ahora se deja preparado el enlace.
+    ====================================================== -->
+    <script src="fuente-aframe.js"></script>
+    <script src="interfaz_m2.js"></script>
+    <!-- FIN BLOQUE: INTERFAZ M2 -->
+
+</body>
+
+</html>

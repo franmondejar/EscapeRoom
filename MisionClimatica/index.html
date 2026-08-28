@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Misión Climática</title>
+
+    <style>
+
+        /* =====================================================
+           INICIO BLOQUE: PORTADA
+           ===================================================== */
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        #portada {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #imagen-portada {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =====================================================
+           ZONA CLICABLE DEL BOTÓN INICIAR
+
+           Es transparente porque el botón ya está dibujado
+           dentro de la propia imagen.
+           ===================================================== */
+
+        #boton-iniciar {
+            position: absolute;
+
+            left: 31%;
+            top: 60%;
+
+            width: 38%;
+            height: 15%;
+
+            cursor: pointer;
+
+            background: transparent;
+            border: none;
+        }
+
+        /* FIN BLOQUE: PORTADA */
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         INICIO BLOQUE: PORTADA MISIÓN CLIMÁTICA
+         ===================================================== -->
+
+    <main id="portada">
+
+        <img
+            id="imagen-portada"
+            src="assets/portada_mision_climatica.png"
+            alt="Misión Climática — Contrato 047"
+        >
+
+        <button
+            id="boton-iniciar"
+            type="button"
+            aria-label="Iniciar Misión Climática"
+        ></button>
+
+    </main>
+
+    <!-- =====================================================
+         FIN BLOQUE: PORTADA MISIÓN CLIMÁTICA
+         ===================================================== -->
+
+
+    <!-- =====================================================
+         INICIO BLOQUE: ACCESO A LA EXPERIENCIA
+         ===================================================== -->
+
+    <script>
+
+        const botonIniciar =
+            document.querySelector("#boton-iniciar");
+
+        botonIniciar.addEventListener("click", () => {
+
+            window.location.href = "intro.html";
+
+        });
+
+    </script>
+
+    <!-- =====================================================
+         FIN BLOQUE: ACCESO A LA EXPERIENCIA
+         ===================================================== -->
+
+</body>
+
+</html>

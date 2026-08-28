@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Misión Climática — Módulo 3</title>
+
+    <!-- =====================================================
+         BLOQUE: LIBRERÍA A-FRAME
+         ===================================================== -->
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7dpkzbU43JQKNtfNhAVXpACJCg4cEHvAuxtZCY_zsncdol5CJq9kWj334IC9QKYTLw-txY9DtviIH85SQAnT55pRROILuVtQL1lyMbaodkPNlMmG6b9Vu9i04CCRuPjF1e_4zEtbixIKwB9oyPKrCa0TU6qA0jbi9wL-LQ9Xs0d-6FT-yBzDusaR3AFRa6do6QxGL-Y87ewE0ncQZ4c-V-wkxuJKGApTBOdiJZrfjHeSPzbBjft_JpwYF0jSE1j380ynOmFpoGRmYdcjlcQcnAFTnlEOMkZyDlawLc6wHHjLlEAFP5FkYmm8HVg1VxCG" charset="UTF-8"></script><script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <!-- FIN BLOQUE: LIBRERÍA A-FRAME -->
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BLOQUE: ESCENA A-FRAME M3
+         ===================================================== -->
+    <a-scene fuente-global>
+
+        <!-- =================================================
+             BLOQUE: RECURSOS M3
+             ================================================= -->
+        <a-assets>
+            <img
+                id="panorama-m3"
+                src="assets/360/m3_mesa_.png"
+            >
+        </a-assets>
+        <!-- FIN BLOQUE: RECURSOS M3 -->
+
+
+        <!-- =================================================
+             BLOQUE: PANORÁMICA 360 M3
+             ================================================= -->
+        <a-sky
+            src="#panorama-m3"
+            rotation="0 0 0"
+        >
+        </a-sky>
+        <!-- FIN BLOQUE: PANORÁMICA 360 M3 -->
+
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - TERMINAL M3
+
+             TEMPORAL:
+             Se muestra en amarillo únicamente para localizar
+             y calibrar la pantalla del ordenador que funcionará
+             como terminal de viabilidad económico-social.
+
+             Cuando quede correctamente situado:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - lo conectaremos a la terminal M3.
+
+             NO MODIFICAR UNA VEZ CERTIFICADA SU POSICIÓN
+             SIN RECALIBRAR.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-terminal-m3"
+            rotation="15 103 0">
+
+            <a-sphere
+                id="hotspot-terminal-m3"
+                position="0 0 -4"
+                radius="1.2"
+                color="yellow"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - TERMINAL M3 -->
+
+
+        <!-- =====================================================
+             BLOQUE: HOTSPOT DE CALIBRACIÓN - SALIDA M3
+
+             TEMPORAL:
+             Se muestra en magenta para localizar y calibrar
+             la puerta SALIDA AL MÓDULO 4.
+
+             Una vez certificada su posición:
+             - conservaremos la rotation;
+             - cambiaremos opacity a 0;
+             - se convertirá en el acceso al control de salida.
+
+             La puerta NO determinará si una decisión es correcta.
+             Posteriormente comprobará únicamente que el código
+             introducido coincide con el código confirmado en M3.
+        ====================================================== -->
+
+        <a-entity
+            id="contenedor-hotspot-salida-m3"
+            rotation="40 -50 0">
+
+            <a-sphere
+                id="hotspot-salida-m3"
+                position="0 0 -4"
+                radius="0.90"
+                color="magenta"
+                opacity="0"
+                class="interactivo">
+            </a-sphere>
+
+        </a-entity>
+
+        <!-- FIN BLOQUE: HOTSPOT DE CALIBRACIÓN - SALIDA M3 -->
+
+
+        <!-- =================================================
+             BLOQUE: CÁMARA DEL OPERADOR
+             ================================================= -->
+        <a-camera
+            position="0 1.6 0"
+            look-controls="enabled: true">
+
+            <!-- =====================================================
+                 BLOQUE: CURSOR E INTERACCIÓN
+
+                 El raycaster únicamente detecta elementos
+                 con class="interactivo".
+            ====================================================== -->
+
+            <a-cursor
+                id="cursor-principal"
+                raycaster="objects: .interactivo"
+                cursor="rayOrigin: mouse">
+            </a-cursor>
+
+            <!-- FIN BLOQUE: CURSOR E INTERACCIÓN -->
+
+            
+            <!-- =====================================================
+                 BLOQUE: TERMINAL - VIABILIDAD ECONÓMICO-SOCIAL M3
+
+                 Menú principal del módulo 3.
+
+                 Desde esta terminal el operador puede acceder a:
+
+                 1. VIABILIDAD
+                    Requiere recuperar las decisiones de M1.
+
+                 2. SERVICIO DE REPARACIÓN
+                    Requiere recuperar las decisiones de M2.
+
+                 Este menú NO realiza cálculos ni validaciones.
+                 Únicamente da acceso a las dos áreas de trabajo.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-terminal-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- =================================================
+                     FONDO DE LA TERMINAL
+                ================================================== -->
+
+                <a-plane
+                    width="2.8"
+                    height="2.2"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                     TÍTULO
+                ================================================== -->
+
+                <a-text
+                    value="VIABILIDAD ECONÓMICO-SOCIAL"
+                    color="#111111"
+                    align="center"
+                    width="2.2"
+                    position="0 0.78 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     TEXTO DE INSTRUCCIÓN
+                ================================================== -->
+
+                <a-text
+                    value="Seleccione una opción"
+                    color="#333333"
+                    align="center"
+                    width="1.7"
+                    position="0 0.42 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTÓN - VIABILIDAD
+                ================================================== -->
+
+                <a-plane
+                    id="boton-viabilidad-m3"
+                    
+                    width="1.8"
+                    height="0.38"
+                    color="#D9D9D9"
+                    position="0 0.05 0.02">
+
+                    <a-text
+                        value="VIABILIDAD"
+                        color="#222222"
+                        align="center"
+                        width="1.5"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BOTÓN - VIABILIDAD -->
+
+
+                <!-- =================================================
+                     BOTÓN - SERVICIO DE REPARACIÓN
+                ================================================== -->
+
+                <a-plane
+                    id="boton-reparacion-m3"
+                    
+                    width="1.8"
+                    height="0.38"
+                    color="#D9D9D9"
+                    position="0 -0.44 0.02">
+
+                    <a-text
+                        value="SERVICIO DE REPARACIÓN"
+                        color="#222222"
+                        align="center"
+                        width="1.45"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BOTÓN - SERVICIO DE REPARACIÓN -->
+
+
+                <!-- =================================================
+                     BOTÓN CERRAR
+                ================================================== -->
+
+                <a-plane
+                    id="cerrar-terminal-m3"
+                    class="interactivo"
+                    width="0.25"
+                    height="0.25"
+                    color="#D9D9D9"
+                    position="1.20 0.92 0.03">
+
+                    <a-text
+                        value="X"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BOTÓN CERRAR -->
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: TERMINAL - VIABILIDAD ECONÓMICO-SOCIAL M3 -->
+
+            <!-- =====================================================
+                 BLOQUE: ACCESO A SERVICIO DE REPARACIÓN - CÓDIGO M2
+
+                 Permite reconstruir las decisiones tomadas en M2.
+
+                 Cada posición puede adoptar:
+                 P = Producto
+                 C = Componentes
+                 M = Materiales
+
+                 La existencia de al menos una C permitirá
+                 posteriormente acceder al servicio de reparación.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-codigo-m2-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+
+                <a-plane
+                    width="2.6"
+                    height="2.25"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- TÍTULO -->
+
+                <a-text
+                    value="SERVICIO DE REPARACIÓN"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 0.82 0.02">
+                </a-text>
+
+
+                <!-- INSTRUCCIÓN -->
+
+                <a-text
+                    value="Introduzca el código del Modulo 2"
+                    color="#444444"
+                    align="center"
+                    width="1.8"
+                    position="0 0.52 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 1
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-1-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="-0.55 0.25 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-m2-1-m3"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.5"
+                    position="-0.55 0 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-m2-1-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="-0.55 -0.25 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     SELECTOR 2
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-2-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="0 0.25 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-m2-2-m3"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.5"
+                    position="0 0 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-m2-2-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="0 -0.25 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     SELECTOR 3
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-m2-3-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="0.55 0.25 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-m2-3-m3"
+                    value="P"
+                    color="#222222"
+                    align="center"
+                    width="1.5"
+                    position="0.55 0 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-m2-3-m3"
+                    width="0.32"
+                    height="0.24"
+                    color="#D9D9D9"
+                    position="0.55 -0.25 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     MENSAJE
+                ================================================== -->
+
+                <a-text
+                    id="respuesta-codigo-m2-m3"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.6"
+                    position="0 -0.55 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTONES
+                ================================================== -->
+
+                <a-plane
+                    id="boton-comprobar-m2-m3"
+                    width="1"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="-0.55 -0.82 0.02">
+
+                    <a-text
+                        value="COMPROBAR"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <a-plane
+                    id="boton-volver-m2-m3"
+                    width="0.8"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0.55 -0.82 0.02">
+
+                    <a-text
+                        value="VOLVER"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: ACCESO A SERVICIO DE REPARACIÓN - CÓDIGO M2 -->
+
+            <!-- =====================================================
+                 BLOQUE: CONFIGURACIÓN DEL SERVICIO DE REPARACIÓN - M3
+
+                 Permite configurar:
+                 - tipo de servicio;
+                 - número de dispositivos;
+                 - precio por reparación.
+
+                 La disponibilidad real depende de las decisiones
+                 reconstruidas mediante el código M2.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-servicio-reparacion-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- =================================================
+                     FONDO
+                ================================================== -->
+
+                <a-plane
+                    width="2.8"
+                    height="2.75"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                     TÍTULO
+                ================================================== -->
+
+                <a-text
+                    value="SERVICIO DE REPARACIÓN"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 1.12 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     TIPO DE SERVICIO
+                ================================================== -->
+
+                <a-text
+                    value="Tipo de servicio"
+                    color="#444444"
+                    align="center"
+                    width="1.5"
+                    position="0 0.82 0.02">
+                </a-text>
+
+                <a-plane
+                    id="aumentar-tipo-reparacion-m3"
+                    width="0.35"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0 0.61 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="tipo-reparacion-m3"
+                    value="SIN SERVICIO"
+                    color="#222222"
+                    align="center"
+                    width="1.65"
+                    position="0 0.39 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-tipo-reparacion-m3"
+                    width="0.35"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0 0.17 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     NÚMERO DE DISPOSITIVOS
+                ================================================== -->
+
+                <a-text
+                    value="Número de dispositivos"
+                    color="#444444"
+                    align="center"
+                    width="1.5"
+                    position="-0.70 -0.13 0.02">
+                </a-text>
+
+                <a-plane
+                    id="aumentar-numero-reparaciones-m3"
+                    width="0.34"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.70 -0.36 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="numero-reparaciones-m3"
+                    value="0"
+                    color="#222222"
+                    align="center"
+                    width="1.3"
+                    position="-0.70 -0.58 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-numero-reparaciones-m3"
+                    width="0.34"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.70 -0.80 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     PRECIO POR REPARACIÓN
+                ================================================== -->
+
+                <a-text
+                    value="Precio por reparación"
+                    color="#444444"
+                    align="center"
+                    width="1.5"
+                    position="0.55 -0.13 0.02">
+                </a-text>
+
+                <a-text
+                    value="máx. 35 EUR/dispositivo"
+                    color="#555555"
+                    align="center"
+                    width="1.15"
+                    position="0.55 -0.28 0.02">
+                </a-text>
+
+
+                <!-- DECENAS -->
+
+                <a-plane
+                    id="aumentar-precio-reparacion-decenas-m3"
+                    width="0.30"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.35 -0.48 0.02">
+
+                    <a-text value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="precio-reparacion-decenas-m3"
+                    value="0"
+                    color="#222222"
+                    align="center"
+                    width="1.3"
+                    position="0.35 -0.70 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-precio-reparacion-decenas-m3"
+                    width="0.30"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.35 -0.92 0.02">
+
+                    <a-text value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- UNIDADES -->
+
+                <a-plane
+                    id="aumentar-precio-reparacion-unidades-m3"
+                    width="0.30"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.75 -0.48 0.02">
+
+                    <a-text value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="precio-reparacion-unidades-m3"
+                    value="0"
+                    color="#222222"
+                    align="center"
+                    width="1.3"
+                    position="0.75 -0.70 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-precio-reparacion-unidades-m3"
+                    width="0.30"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.75 -0.92 0.02">
+
+                    <a-text value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                <!-- =================================================
+                     MENSAJE DE VALIDACIÓN
+                ================================================== -->
+
+                <a-text
+                    id="respuesta-servicio-reparacion-m3"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.5"
+                    position="0 -1.08 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTONES
+                ================================================== -->
+
+                <a-plane
+                    id="boton-confirmar-servicio-reparacion-m3"
+                    width="1.05"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="-0.60 -1.25 0.02">
+
+                    <a-text
+                        value="CONFIRMAR"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-plane
+                    id="boton-volver-servicio-reparacion-m3"
+                    width="0.9"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0.65 -1.25 0.02">
+
+                    <a-text
+                        value="VOLVER"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: CONFIGURACIÓN DEL SERVICIO DE REPARACIÓN - M3 -->
+
+
+            <!-- =====================================================
+                 BLOQUE: ACCESO A VIABILIDAD - CÓDIGO PV M1
+
+                 Permite recuperar la propuesta registrada en M1
+                 mediante el código PV anotado por el equipo.
+
+                 El código tiene formato:
+
+                 PV-XX-XX-XX
+
+                 Los selectores reproducen el sistema utilizado
+                 previamente en M1.
+
+                 IMPORTANTE:
+                 Este panel únicamente recupera la información
+                 necesaria para configurar la interfaz de M3.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-codigo-pv-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- =================================================
+                     FONDO
+                ================================================== -->
+
+                <a-plane
+                    width="2.6"
+                    height="2.25"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- =================================================
+                     TÍTULO
+                ================================================== -->
+
+                <a-text
+                    value="ACCESO A VIABILIDAD"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 0.82 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     INSTRUCCIÓN
+                ================================================== -->
+
+                <a-text
+                    value="Introduzca el código de propuesta M1"
+                    color="#444444"
+                    align="center"
+                    width="1.8"
+                    position="0 0.52 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     PREFIJO PV
+                ================================================== -->
+
+                <a-text
+                    value="PV -"
+                    color="#222222"
+                    align="center"
+                    width="1.2"
+                    position="-0.82 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 1 - CÓDIGO PV
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-pv-1-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.34 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-pv-1-m3"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="-0.34 0.05 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-pv-1-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="-0.34 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 1 - CÓDIGO PV -->
+
+
+                <!-- SEPARADOR -->
+
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="-0.04 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 2 - CÓDIGO PV
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-pv-2-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.26 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-pv-2-m3"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.26 0.05 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-pv-2-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.26 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 2 - CÓDIGO PV -->
+
+
+                <!-- SEPARADOR -->
+
+                <a-text
+                    value="-"
+                    color="#222222"
+                    align="center"
+                    width="1"
+                    position="0.56 0.05 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     SELECTOR 3 - CÓDIGO PV
+                ================================================== -->
+
+                <a-plane
+                    id="aumentar-pv-3-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.86 0.30 0.02">
+
+                    <a-text
+                        value="+"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <a-text
+                    id="codigo-pv-3-m3"
+                    value="00"
+                    color="#222222"
+                    align="center"
+                    width="1.4"
+                    position="0.86 0.05 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-pv-3-m3"
+                    width="0.28"
+                    height="0.22"
+                    color="#D9D9D9"
+                    position="0.86 -0.20 0.02">
+
+                    <a-text
+                        value="-"
+                        color="#222222"
+                        align="center"
+                        width="1.2"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN SELECTOR 3 - CÓDIGO PV -->
+
+
+                <!-- =================================================
+                     MENSAJE DE VALIDACIÓN
+                ================================================== -->
+
+                <a-text
+                    id="respuesta-codigo-pv-m3"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.8"
+                    position="0 -0.52 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTÓN COMPROBAR
+                ================================================== -->
+
+                <a-plane
+                    id="boton-comprobar-pv-m3"
+                    width="1"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="-0.55 -0.82 0.02">
+
+                    <a-text
+                        value="COMPROBAR"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+
+                
+
+
+                <!-- =================================================
+                     BOTÓN VOLVER
+                ================================================== -->
+
+                <a-plane
+                    id="boton-volver-pv-m3"
+                    width="0.8"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0.55 -0.82 0.02">
+
+                    <a-text
+                        value="VOLVER"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: ACCESO A VIABILIDAD - CÓDIGO PV M1 -->
+
+
+            <!-- =====================================================
+                 BLOQUE: PRECIOS DE VENTA - VIABILIDAD M3
+
+                 Esta ventana se abre después de recuperar
+                 correctamente el código PV de M1.
+
+                 Solo se habilitan los productos seleccionados
+                 previamente por el equipo.
+
+                 Cada precio se construye mediante tres dígitos:
+                 CENTENAS - DECENAS - UNIDADES.
+
+                 IMPORTANTE:
+                 Esta interfaz NO valida límites sociales,
+                 costes ni margen global.
+                 La validación corresponde al motor lógico.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-precios-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <!-- FONDO -->
+                <a-plane
+                    width="2.8"
+                    height="2.65"
+                    color="#F2F2F2">
+                </a-plane>
+
+
+                <!-- TÍTULO -->
+                <a-text
+                    value="VIABILIDAD"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 1.05 0.02">
+                </a-text>
+
+
+                <!-- INSTRUCCIÓN -->
+                <a-text
+                    value="Establezca los precios de venta"
+                    color="#444444"
+                    align="center"
+                    width="1.8"
+                    position="0 0.78 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     PRODUCTO 1
+                ================================================== -->
+
+                <a-entity
+                    id="fila-producto-1-m3"
+                    position="0 0.28 0">
+
+                    <a-text
+                        id="nombre-producto-1-m3"
+                        value=""
+                        color="#222222"
+                        align="left"
+                        width="1.35"
+                        position="-1.20 0 0.02">
+                    </a-text>
+
+
+                    <!-- CENTENAS -->
+
+                    <a-plane
+                        id="aumentar-precio-1-centenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.25 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-1-centenas-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0.25 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-1-centenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.25 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+
+                    <!-- DECENAS -->
+
+                    <a-plane
+                        id="aumentar-precio-1-decenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.65 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-1-decenas-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0.65 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-1-decenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.65 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+
+                    <!-- UNIDADES -->
+
+                    <a-plane
+                        id="aumentar-precio-1-unidades-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="1.05 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-1-unidades-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="1.05 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-1-unidades-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="1.05 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        value="EUR"
+                        color="#222222"
+                        align="left"
+                        width="0.75"
+                        position="1.22 0 0.02">
+                    </a-text>
+
+                </a-entity>
+
+                <!-- FIN PRODUCTO 1 -->
+
+
+                <!-- =================================================
+                     PRODUCTO 2
+                ================================================== -->
+
+                <a-entity
+                    id="fila-producto-2-m3"
+                    position="0 -0.48 0">
+
+                    <a-text
+                        id="nombre-producto-2-m3"
+                        value=""
+                        color="#222222"
+                        align="left"
+                        width="1.35"
+                        position="-1.20 0 0.02">
+                    </a-text>
+
+
+                    <!-- CENTENAS -->
+
+                    <a-plane
+                        id="aumentar-precio-2-centenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.25 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-2-centenas-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0.25 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-2-centenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.25 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+
+                    <!-- DECENAS -->
+
+                    <a-plane
+                        id="aumentar-precio-2-decenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.65 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-2-decenas-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0.65 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-2-decenas-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="0.65 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+
+                    <!-- UNIDADES -->
+
+                    <a-plane
+                        id="aumentar-precio-2-unidades-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="1.05 0.24 0.02">
+
+                        <a-text value="+"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        id="precio-2-unidades-m3"
+                        value="0"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="1.05 0 0.02">
+                    </a-text>
+
+                    <a-plane
+                        id="disminuir-precio-2-unidades-m3"
+                        width="0.28"
+                        height="0.22"
+                        color="#D9D9D9"
+                        position="1.05 -0.24 0.02">
+
+                        <a-text value="-"
+                            color="#222222"
+                            align="center"
+                            width="1.2"
+                            position="0 0 0.01">
+                        </a-text>
+                    </a-plane>
+
+                    <a-text
+                        value="EUR"
+                        color="#222222"
+                        align="left"
+                        width="0.75"
+                        position="1.22 0 0.02">
+                    </a-text>
+
+                </a-entity>
+
+                <!-- FIN PRODUCTO 2 -->
+
+
+                <!-- =================================================
+                     BLOQUE: COMPROBACIÓN DE PRECIOS - M3
+
+                     Permite comprobar los precios establecidos
+                     antes de continuar con el resto de decisiones.
+
+                     La interfaz mostrará el resultado de la
+                     comprobación sin modificar el motor lógico.
+                ================================================== -->
+
+                <a-text
+                    id="respuesta-precios-m3"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.55"
+                    position="0 -0.76 0.02">
+                </a-text>
+
+                <a-plane
+                    id="boton-comprobar-precios-m3"
+                    width="1.05"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="-0.60 -1.03 0.02">
+
+                    <a-text
+                        value="COMPROBAR"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+                <!-- FIN BLOQUE: COMPROBACIÓN DE PRECIOS - M3 -->
+
+
+                <!-- =================================================
+                     BOTÓN VOLVER
+                ================================================== -->
+
+                <a-plane
+                    id="boton-volver-precios-m3"
+                    width="0.9"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0.60 -1.03 0.02">
+
+                    <a-text
+                        value="VOLVER"
+                        color="#222222"
+                        align="center"
+                        width="1.3"
+                        position="0 0 0.01">
+                    </a-text>
+
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: PRECIOS DE VENTA - VIABILIDAD M3 -->
+
+
+
+            <!-- =====================================================
+                 BLOQUE: CONTROL DE SALIDA - MÓDULO 3
+
+                 Reproduce el sistema de puerta utilizado en M1/M2.
+
+                 El grupo reconstruye manualmente el código M3:
+                 - P, T y S: tres dígitos por variable.
+                 - Selector SIN SERVICIO / CON SERVICIO.
+                 - Con servicio: R incluye tres dígitos para número
+                   de reparaciones y tres para precio por reparación.
+
+                 La puerta NO recalcula la viabilidad.
+                 La comprobación se implementará en interfaz_m3.js
+                 comparando con el código M3 ya registrado.
+            ====================================================== -->
+
+            <a-entity
+                id="ventana-salida-m3"
+                visible="false"
+                position="0 0 -2">
+
+                <a-plane
+                    width="3.15"
+                    height="3.45"
+                    color="#F2F2F2">
+                </a-plane>
+
+                <a-text
+                    value="CONTROL DE SALIDA"
+                    color="#222222"
+                    align="center"
+                    width="2"
+                    position="0 1.47 0.02">
+                </a-text>
+
+                <a-text
+                    value="Introduzca el código del Modulo 3"
+                    color="#444444"
+                    align="center"
+                    width="1.8"
+                    position="0 1.20 0.02">
+                </a-text>
+
+                <a-text
+                    value="M3 -"
+                    color="#222222"
+                    align="center"
+                    width="1.0"
+                    position="-1.30 0.50 0.02">
+                </a-text>
+
+                <!-- =================================================
+                     PRECIOS P / T / S - 3 DÍGITOS POR VARIABLE
+                ================================================== -->
+                
+                <a-text value="P" color="#222222" align="center"
+                    width="1.0" position="-0.82 0.83 0.02"></a-text>
+                    <a-plane id="aumentar-salida-m3-p-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-1.0 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-p-1" value="0" color="#222222" align="center"
+                        width="1.15" position="-1.0 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-p-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-1.0 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-p-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.82 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-p-2" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.82 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-p-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.82 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-p-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.6399999999999999 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-p-3" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.6399999999999999 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-p-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.6399999999999999 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                <a-text value="T" color="#222222" align="center"
+                    width="1.0" position="0.0 0.83 0.02"></a-text>
+                    <a-plane id="aumentar-salida-m3-t-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.18 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-t-1" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.18 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-t-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.18 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-t-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.0 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-t-2" value="0" color="#222222" align="center"
+                        width="1.15" position="0.0 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-t-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.0 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-t-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.18 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-t-3" value="0" color="#222222" align="center"
+                        width="1.15" position="0.18 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-t-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.18 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                <a-text value="S" color="#222222" align="center"
+                    width="1.0" position="0.82 0.83 0.02"></a-text>
+                    <a-plane id="aumentar-salida-m3-s-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.6399999999999999 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-s-1" value="0" color="#222222" align="center"
+                        width="1.15" position="0.6399999999999999 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-s-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.6399999999999999 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-s-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.82 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-s-2" value="0" color="#222222" align="center"
+                        width="1.15" position="0.82 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-s-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.82 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-s-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="1.0 0.68 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-s-3" value="0" color="#222222" align="center"
+                        width="1.15" position="1.0 0.48 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-s-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="1.0 0.28 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                <!-- FIN PRECIOS P / T / S -->
+
+
+                <!-- =================================================
+                     SELECTOR: SIN SERVICIO / CON SERVICIO
+                ================================================== -->
+
+                <a-text
+                    value="Servicio"
+                    color="#444444"
+                    align="center"
+                    width="1.2"
+                    position="0 0.02 0.02">
+                </a-text>
+
+                <a-plane
+                    id="aumentar-salida-m3-servicio"
+                    width="0.30"
+                    height="0.18"
+                    color="#D9D9D9"
+                    position="0 -0.12 0.02">
+                    <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                </a-plane>
+
+                <a-text
+                    id="salida-m3-servicio"
+                    value="SIN SERVICIO"
+                    color="#222222"
+                    align="center"
+                    width="1.35"
+                    position="0 -0.28 0.02">
+                </a-text>
+
+                <a-plane
+                    id="disminuir-salida-m3-servicio"
+                    width="0.30"
+                    height="0.18"
+                    color="#D9D9D9"
+                    position="0 -0.48 0.02">
+                    <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                </a-plane>
+
+                <!-- FIN SELECTOR SERVICIO -->
+
+
+                <!-- =================================================
+                     DATOS R - SOLO PARA CON SERVICIO
+
+                     Los controles se dejan agrupados para que
+                     interfaz_m3.js pueda activarlos/desactivarlos.
+                ================================================== -->
+
+                <a-entity
+                    id="grupo-salida-m3-reparacion"
+                    visible="false">
+
+                    <a-text value="R" color="#222222" align="center"
+                        width="1.0" position="-0.72 -0.90 0.02"></a-text>
+
+                    
+                    <a-plane id="aumentar-salida-m3-r-num-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.48 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-num-1" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.48 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-num-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.48 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-r-num-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.3 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-num-2" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.3 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-num-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.3 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-r-num-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.12 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-num-3" value="0" color="#222222" align="center"
+                        width="1.15" position="-0.12 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-num-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="-0.12 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+
+                    <a-text value="x" color="#222222" align="center"
+                        width="1.0" position="0.03 -0.90 0.02"></a-text>
+
+                    
+                    <a-plane id="aumentar-salida-m3-r-precio-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.18 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-precio-1" value="0" color="#222222" align="center"
+                        width="1.15" position="0.18 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-precio-1" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.18 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-r-precio-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.36 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-precio-2" value="0" color="#222222" align="center"
+                        width="1.15" position="0.36 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-precio-2" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.36 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-plane id="aumentar-salida-m3-r-precio-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.54 -0.70 0.02">
+                        <a-text value="+" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="salida-m3-r-precio-3" value="0" color="#222222" align="center"
+                        width="1.15" position="0.54 -0.90 0.02"></a-text>
+                    <a-plane id="disminuir-salida-m3-r-precio-3" width="0.22" height="0.18"
+                        color="#D9D9D9" position="0.54 -1.10 0.02">
+                        <a-text value="-" color="#222222" align="center" width="1.1" position="0 0 0.01"></a-text>
+                    </a-plane>
+
+                </a-entity>
+
+                <!-- FIN DATOS R -->
+
+
+                <!-- =================================================
+                     FEEDBACK DE SALIDA
+                ================================================== -->
+
+                <a-text
+                    id="feedback-salida-m3"
+                    value=""
+                    color="#333333"
+                    align="center"
+                    width="1.7"
+                    position="0 -1.18 0.02">
+                </a-text>
+
+
+                <!-- =================================================
+                     BOTONES COMPROBAR / CERRAR
+                ================================================== -->
+
+                <a-plane
+                    id="boton-comprobar-salida-m3"
+                    width="1.05"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="-0.62 -1.48 0.02">
+                    <a-text value="COMPROBAR" color="#222222" align="center"
+                        width="1.3" position="0 0 0.01"></a-text>
+                </a-plane>
+
+                <a-plane
+                    id="cerrar-salida-m3"
+                    width="0.80"
+                    height="0.28"
+                    color="#D9D9D9"
+                    position="0.62 -1.48 0.02">
+                    <a-text value="CERRAR" color="#222222" align="center"
+                        width="1.3" position="0 0 0.01"></a-text>
+                </a-plane>
+
+            </a-entity>
+
+            <!-- FIN BLOQUE: CONTROL DE SALIDA - MÓDULO 3 -->
+
+
+        </a-camera>
+        <!-- FIN BLOQUE: CÁMARA DEL OPERADOR -->
+
+    </a-scene>
+    <!-- FIN BLOQUE: ESCENA A-FRAME M3 -->
+
+
+    <!-- =====================================================
+         BLOQUE: MOTOR LÓGICO DE LA ACTIVIDAD
+         ===================================================== -->
+    <script src="constants.js"></script>
+    <script src="state.js"></script>
+    <script src="script.js"></script>
+    <!-- FIN BLOQUE: MOTOR LÓGICO DE LA ACTIVIDAD -->
+
+
+    <!-- =====================================================
+        BLOQUE: FUENTE GLOBAL A-FRAME
+        Aplica Roboto a todos los textos de la escena.
+        ===================================================== -->
+    <script src="fuente-aframe.js"></script>
+    <!-- FIN BLOQUE: FUENTE GLOBAL A-FRAME -->
+
+
+    <!-- =====================================================
+        BLOQUE: INTERFAZ ESPECÍFICA M3
+        ===================================================== -->
+    <script src="interfaz_m3.js"></script>
+    <!-- FIN BLOQUE: INTERFAZ ESPECÍFICA M3 -->
+
+</body>
+
+</html>

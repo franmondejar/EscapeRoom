@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Climática — Módulo 4</title>
+
+    <!-- =====================================================
+         BLOQUE: LIBRERÍA A-FRAME
+         ===================================================== -->
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <!-- FIN BLOQUE: LIBRERÍA A-FRAME -->
+
+    <script src="fuente-aframe.js"></script>
+
+</head>
+
+<body>
+
+<a-scene fuente-global>
+
+    <!-- =====================================================
+         BLOQUE: RECURSOS M4
+         ===================================================== -->
+    <a-assets>
+        <img id="panorama-m4" src="assets/360/m4_sala_.png">
+    </a-assets>
+    <!-- FIN BLOQUE: RECURSOS M4 -->
+
+
+    <!-- =====================================================
+         BLOQUE: PANORÁMICA 360 M4
+         ===================================================== -->
+    <a-sky src="#panorama-m4" rotation="0 0 0"></a-sky>
+    <!-- FIN BLOQUE: PANORÁMICA 360 M4 -->
+
+
+    <!-- =====================================================
+         BLOQUE: HOTSPOT PANTALLA M4
+         POSICIÓN CERTIFICADA
+         ===================================================== -->
+    <a-entity
+        id="contenedor-hotspot-pantalla-m4"
+        rotation="40 95 0">
+
+        <a-sphere
+            id="hotspot-pantalla-m4"
+            position="0 0 -4"
+            radius="1.5"
+            color="yellow"
+            opacity="0"
+            class="interactivo">
+        </a-sphere>
+
+    </a-entity>
+    <!-- FIN BLOQUE: HOTSPOT PANTALLA M4 -->
+
+
+    <!-- =====================================================
+         BLOQUE: CÁMARA DEL OPERADOR
+         ===================================================== -->
+    <a-camera position="0 1.6 0" look-controls="enabled: true">
+
+        <!-- =================================================
+             BLOQUE: CURSOR / RAYCASTER
+             ================================================= -->
+        <a-cursor
+            id="cursor-principal"
+            raycaster="objects: .interactivo"
+            cursor="rayOrigin: mouse">
+        </a-cursor>
+        <!-- FIN BLOQUE: CURSOR / RAYCASTER -->
+
+
+        <!-- =====================================================
+             BLOQUE: CONTENEDOR GENERAL DE CÓDIGOS M4
+
+             Tres paneles independientes:
+             M1 | M2 | M3
+
+             En este paso únicamente se comprueba distribución
+             e interacción. INICIAR AUDITORÍA todavía no valida.
+             ===================================================== -->
+        <a-entity
+            id="panel-codigos-m4"
+            visible="false"
+            position="0 0 -2">
+
+            <!-- TÍTULO GENERAL -->
+            <a-plane
+                width="6.80"
+                height="0.48"
+                color="#F2F2F2"
+                position="0 0.84 0">
+            </a-plane>
+
+            <a-text
+                value="AUDITORIA DEL TRIPLE BALANCE"
+                color="#111111"
+                align="center"
+                width="2.5"
+                position="0 0.93 0.02">
+            </a-text>
+
+            <a-text
+                value="Introduzca los codigos de los modulos anteriores"
+                color="#333333"
+                align="center"
+                width="1.8"
+                position="0 0.75 0.02">
+            </a-text>
+
+
+            <!-- =================================================
+                 BLOQUE: PANEL CÓDIGO M1
+                 ================================================= -->
+            <a-entity id="panel-codigo-m1-m4" position="-2.15 -0.02 0">
+
+                <a-plane width="1.70" height="1.55" color="#F2F2F2"></a-plane>
+
+                <a-text
+                    value="CODIGO M1"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 0.46 0.02">
+                </a-text>
+
+                <a-text
+                    value="PV-"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="-0.46 0.05 0.02">
+                </a-text>
+
+                <!-- Grupo 1 -->
+                <a-entity position="-0.18 0.05 0.02">
+                    <a-plane id="m1-mas-1" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m1-valor-1" value="00" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m1-menos-1" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+                <a-text value="-" color="#111" align="center" width="1.3" position="0.00 0.05 0.02"></a-text>
+
+                <!-- Grupo 2 -->
+                <a-entity position="0.18 0.05 0.02">
+                    <a-plane id="m1-mas-2" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m1-valor-2" value="00" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m1-menos-2" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+                <a-text value="-" color="#111" align="center" width="1.3" position="0.36 0.05 0.02"></a-text>
+
+                <!-- Grupo 3 -->
+                <a-entity position="0.54 0.05 0.02">
+                    <a-plane id="m1-mas-3" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m1-valor-3" value="00" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m1-menos-3" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+            </a-entity>
+            <!-- FIN BLOQUE: PANEL CÓDIGO M1 -->
+
+
+            <!-- =================================================
+                 BLOQUE: PANEL CÓDIGO M2
+                 ================================================= -->
+            <a-entity id="panel-codigo-m2-m4" position="-0.62 -0.02 0">
+
+                <a-plane width="1.70" height="1.55" color="#F2F2F2"></a-plane>
+
+                <a-text
+                    value="CODIGO M2"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 0.46 0.02">
+                </a-text>
+
+                <a-text
+                    value="M2-"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="-0.46 0.05 0.02">
+                </a-text>
+
+                <a-entity position="-0.18 0.05 0.02">
+                    <a-plane id="m2-mas-1" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m2-valor-1" value="P" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m2-menos-1" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+                <a-text value="-" color="#111" align="center" width="1.3" position="0.00 0.05 0.02"></a-text>
+
+                <a-entity position="0.18 0.05 0.02">
+                    <a-plane id="m2-mas-2" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m2-valor-2" value="P" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m2-menos-2" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+                <a-text value="-" color="#111" align="center" width="1.3" position="0.36 0.05 0.02"></a-text>
+
+                <a-entity position="0.54 0.05 0.02">
+                    <a-plane id="m2-mas-3" width="0.20" height="0.17" color="#D9D9D9" position="0 0.24 0.01">
+                        <a-text value="+" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                    <a-text id="m2-valor-3" value="P" color="#111" align="center" width="1.3"></a-text>
+                    <a-plane id="m2-menos-3" width="0.20" height="0.17" color="#D9D9D9" position="0 -0.24 0.01">
+                        <a-text value="-" color="#111" align="center" width="1.3" position="0 0 0.01"></a-text>
+                    </a-plane>
+                </a-entity>
+
+            </a-entity>
+            <!-- FIN BLOQUE: PANEL CÓDIGO M2 -->
+
+
+            <!-- =================================================
+                 BLOQUE: PANEL CÓDIGO M3
+
+                 En esta prueba incluimos P/T/S.
+                 El bloque R se incorporará cuando confirmemos
+                 que la distribución de los tres paneles funciona.
+                 ================================================= -->
+            <a-entity id="panel-codigo-m3-m4" position="1.55 -0.02 0">
+
+                <a-plane width="3.65" height="1.55" color="#F2F2F2"></a-plane>
+
+                <a-text
+                    value="CODIGO M3"
+                    color="#111111"
+                    align="center"
+                    width="1.35"
+                    position="0 0.55 0.02">
+                </a-text>
+
+                <a-text id="m3-texto-p" value="P      0   0   0" color="#111" width="1.25" position="-1.18 0.30 0.02"></a-text>
+                <a-text id="m3-texto-t" value="T      0   0   0" color="#111" width="1.25" position="-1.18 0.08 0.02"></a-text>
+                <a-text id="m3-texto-s" value="S      0   0   0" color="#111" width="1.25" position="-1.18 -0.14 0.02"></a-text>
+
+                <!-- Los botones de los 9 dígitos M3 se generan
+                     desde interfaz_m4.js para mantener limpio
+                     este bloque HTML. -->
+                <a-entity id="controles-m3-m4"></a-entity>
+
+
+                <!-- =================================================
+                     BLOQUE: SERVICIO DE REPARACIÓN M3
+                     ================================================= -->
+
+                <a-text
+                    value="SERVICIO"
+                    color="#111"
+                    width="1.1"
+                    position="-1.18 -0.42 0.02">
+                </a-text>
+
+                <a-plane
+                    id="m3-servicio-mas"
+                    width="0.18"
+                    height="0.15"
+                    color="#D9D9D9"
+                    position="-0.48 -0.33 0.03">
+                    <a-text value="+" color="#111" align="center" width="1.1" position="0 0 0.01"></a-text>
+                </a-plane>
+
+                <a-text
+                    id="m3-servicio-valor"
+                    value="SIN SERVICIO"
+                    color="#111"
+                    align="center"
+                    width="1.05"
+                    position="-0.02 -0.57 0.02">
+                </a-text>
+
+                <a-plane
+                    id="m3-servicio-menos"
+                    width="0.18"
+                    height="0.15"
+                    color="#D9D9D9"
+                    position="-0.48 -0.51 0.03">
+                    <a-text value="-" color="#111" align="center" width="1.1" position="0 0 0.01"></a-text>
+                </a-plane>
+
+
+                <!-- =================================================
+                     BLOQUE: DATOS R - SOLO CON SERVICIO
+                     ================================================= -->
+
+                <a-entity
+                    id="grupo-r-m3-m4"
+                    visible="false"
+                    position="-0.18 -0.67 0">
+
+                    <a-text
+                        id="m3-texto-r"
+                        value="R      0   0   0   x   0   0   0"
+                        color="#111"
+                        width="1.0"
+                        position="-0.88 0 0.02">
+                    </a-text>
+
+                    <a-entity id="controles-r-m3-m4"></a-entity>
+
+                </a-entity>
+
+                <!-- FIN BLOQUE: DATOS R -->
+
+            </a-entity>
+            <!-- FIN BLOQUE: PANEL CÓDIGO M3 -->
+
+
+            <!-- =================================================
+                 BLOQUE: BOTONES GENERALES
+                 ================================================= -->
+            <a-plane
+                id="cerrar-codigos-m4"
+                width="0.85"
+                height="0.27"
+                color="#D9D9D9"
+                position="-0.72 -0.91 0.03">
+
+                <a-text
+                    value="CERRAR"
+                    color="#222222"
+                    align="center"
+                    width="1.25"
+                    position="0 0 0.01">
+                </a-text>
+            </a-plane>
+
+            <a-plane
+                id="iniciar-auditoria-m4"
+                width="1.35"
+                height="0.27"
+                color="#D9D9D9"
+                position="0.72 -0.91 0.03">
+
+                <a-text
+                    value="INICIAR AUDITORIA"
+                    color="#222222"
+                    align="center"
+                    width="1.20"
+                    position="0 0 0.01">
+                </a-text>
+            </a-plane>
+            <!-- FIN BLOQUE: BOTONES GENERALES -->
+
+        </a-entity>
+        <!-- FIN BLOQUE: CONTENEDOR GENERAL DE CÓDIGOS M4 -->
+
+
+        <!-- =====================================================
+             INICIO BLOQUE: INFORME GLOBAL M4
+
+             Una única ventana con las tres dimensiones del
+             Triple Balance. Inicialmente permanece oculta.
+             ===================================================== -->
+        <a-entity
+            id="panel-informe-m4"
+            visible="false"
+            position="0 0 -2">
+
+            <a-plane
+                width="6.80"
+                height="2.25"
+                color="#F2F2F2">
+            </a-plane>
+
+            <a-text
+                value="PERFIL DE TRIPLE BALANCE"
+                color="#111111"
+                align="center"
+                width="2.8"
+                position="0 0.92 0.02">
+            </a-text>
+
+
+            <!-- DIMENSIÓN ECONÓMICA -->
+            <a-text
+                value="ECONOMICO"
+                color="#111111"
+                align="center"
+                width="1.6"
+                position="-2.15 0.62 0.02">
+            </a-text>
+
+            <a-text
+                id="informe-economico-m4"
+                value=""
+                color="#222222"
+                width="1.55"
+                wrap-count="38"
+                position="-3.05 0.28 0.02">
+            </a-text>
+
+
+            <!-- DIMENSIÓN AMBIENTAL -->
+            <a-text
+                value="AMBIENTAL"
+                color="#111111"
+                align="center"
+                width="1.6"
+                position="0 0.62 0.02">
+            </a-text>
+
+            <a-text
+                id="informe-ambiental-m4"
+                value=""
+                color="#222222"
+                width="1.55"
+                wrap-count="38"
+                position="-0.90 0.28 0.02">
+            </a-text>
+
+
+            <!-- DIMENSIÓN SOCIAL -->
+            <a-text
+                value="SOCIAL"
+                color="#111111"
+                align="center"
+                width="1.6"
+                position="2.15 0.62 0.02">
+            </a-text>
+
+            <a-text
+                id="informe-social-m4"
+                value=""
+                color="#222222"
+                width="1.55"
+                wrap-count="42"
+                position="1.25 0.28 0.02">
+            </a-text>
+
+
+            <!-- REFLEXIÓN GLOBAL -->
+            <a-text
+                id="informe-oportunidades-m4"
+                value=""
+                color="#222222"
+                align="center"
+                width="2.6"
+                wrap-count="82"
+                position="0 -0.55 0.02">
+            </a-text>
+
+            <a-text
+                value="¿Es vuestra empresa todo lo buena que podría ser?\n¿Podríais mejorar alguna dimensión sin comprometer otra?"
+                color="#111111"
+                align="center"
+                width="2.7"
+                position="0 -0.88 0.02">
+            </a-text>
+
+        </a-entity>
+        <!-- =====================================================
+             FIN BLOQUE: INFORME GLOBAL M4
+             ===================================================== -->
+
+    </a-camera>
+    <!-- FIN BLOQUE: CÁMARA DEL OPERADOR -->
+
+</a-scene>
+
+
+<!-- =====================================================
+     BLOQUE: MOTOR LÓGICO
+     ===================================================== -->
+<script src="constants.js"></script>
+<script src="state.js"></script>
+<script src="script.js"></script>
+<!-- FIN BLOQUE: MOTOR LÓGICO -->
+
+<script src="interfaz_m4.js"></script>
+
+</body>
+</html>
